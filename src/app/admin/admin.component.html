@@ -1,0 +1,63 @@
+<div class="container" >
+    <div class="main-body">
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <!-- Trigger the modal with a button -->
+          <h2>Control Panel</h2>
+
+        </ol>
+      </nav>
+  
+      <div *ngFor="let user of users" class="col mb-3">
+        <div>
+          <div class="card">
+            <img
+              src="https://www.meme-arsenal.com/memes/31a3f1f805b7c229a395fb309f107b0e.jpg"
+              alt="Cover" class="card-img-top" height="50px">
+            <div class="card-body text-center">
+              <img src="https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png" style="margin-top:-65px" height="60px" width="60px" alt="Team"
+                class="img-fluid img-thumbnail rounded-circle border-0 mb-3">
+              <h5 class="card-title">User ID: {{user.id}} </h5>
+              <p class="text-secondary mb-1">Username: {{user.userName}}</p>
+              <p class="text-muted font-size-sm">Balance: ${{user.balance}}</p>
+              <p class="text-muted font-size-sm">{{user.roles}}</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-light btn-sm bg-white has-icon btn-block" type="button" (click)="Edit(update, user.id)"><i
+                  class="material-icons">Edit</i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Team Modal -->
+<ng-template #update let-modal>
+    <form>
+      <div class="modal-header">
+        <h4 class="modal-title" id="edit" id="modal-basic-title">Update</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <label for="branch">Role</label>
+                  <select id="branch"  [(ngModel)]="roles" name="roles" class="form-control">
+                    <option value="ROLE_ADMIN">ADMIN</option>
+                    <option value="ROLE_GUEST">GUEST</option>
+                  </select>
+        <br>
+        <label for="username">Balance</label>
+        <input type="text" class="form-control" [(ngModel)]="balance" name="balance" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+        <div class="border text-center">
+          <input type="submit" name="Add"  class="btn btn-primary" value="Edit" data-dismiss="modal" (click)="modal.close('Save click')" class="btn btn-success" (click)="onSubmitEdit()"(click)="closeModal()" >
+        </div>
+      </div>
+    </form>
+  </ng-template>

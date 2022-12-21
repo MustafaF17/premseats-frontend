@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "premseats": {
+      "hosting": {
+        "premseats-frontend": [
+          "premseats"
+        ]
+      }
+    }
+  }
+}

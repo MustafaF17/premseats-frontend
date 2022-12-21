@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Great Shoes inc.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="container spacing">
+      <h1 class="primary-title">PremSeats</h1>
+      <p>Attend your favourite premier league games</p>
+      <p>Welcome back {{name}}</p>
+      <a routerLink="/team" class="btn">SHOW TEAMS</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="our-products">
+      <div class="container">
+        <div class="section-title">
+          <h1>Available Tickets</h1>
+          <br>
+          <h2>Current Balance: ${{balance}}</h2>
+          
+        </div>
+
+
+        <div id="fixtures">
+          <div class="container mt-5 mb-3">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let fixture of fixtures">
+                    <div class="card p-3 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="icon"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn0-C9lbHZauZUyoniqzoCSRgp5iEJE5iZAHvtdKma2UvP4owxYhgEXO2zezwUxrRcXvs&usqp=CAU"> </div>
+                                <div class="ms-2 c-details">
+                                    <h6 class="mb-0">‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎Fixture ID {{fixture.id}}</h6> <span>‏‏‎ ‎‎‎‎‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ {{fixture.date}}</span>
+                                </div>
+                            </div>
+                            <div class="badge"> <span>HOT!</span> </div>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="heading">{{fixture.home}} vs {{fixture.away}}</h3>
+                            <br><br>
+                            <h5>Ticket price: ${{fixture.price}}</h5>
+                            <div class="mt-5">
+                                <div>
+                                  <button type="button" class="btn btn" (click)="Purchase(fixture.id, fixture.price, fixture.home, fixture.away, fixture.date, fixture.available)">Purchase</button>
+                                </div>
+                                <div class="mt-3"> <span class="text1">{{fixture.available}} <span class="text2">Tickets available</span></span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>
+© 2021 GitHub, Inc.

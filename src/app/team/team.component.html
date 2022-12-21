@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="main-body">
+    <nav *ngIf="isAdmin;" aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-primary" (click)="open(content)">Add New Team</button>
+      </ol>
+    </nav>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
+      <div *ngFor="let team of teams" class="col mb-3">
+        <div class="card">
+          <img
+            src="https://resources.premierleague.com/photos/2020/12/02/ca403c92-db70-48ac-91e2-0f2f18277133/PageHeader_RainbowLaces.png?width=1600&height=600"
+            alt="Cover" class="card-img-top">
+          <div class="card-body text-center">
+            <img src="{{team?.imageUrl}}" style="margin-top:-65px" height="60px" width="60px" alt="Team"
+              class="img-fluid img-thumbnail rounded-circle border-0 mb-3">
+            <h5 class="card-title">{{team.name}}</h5>
+            <p class="text-secondary mb-1">ID: {{team.id}}</p>
+            <p class="text-muted font-size-sm">Location: {{team.location}}</p>
+            <p class="text-muted font-size-sm">Number of seats: {{team.nrSeats}}</p>
+          </div>
+          <div *ngIf="isAdmin;" class="card-footer">
+            <button class="btn btn-light btn-sm bg-white has-icon btn-block" type="button" (click)="Edit(update, team.id)"><i
+                class="material-icons">Edit</i></button>
+            <button class="btn btn-light btn-sm bg-white has-icon ml-2" type="button" (click)="Delete(team.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add New Team Modal -->
+<ng-template #content let-modal>
+  <form>
+    <div class="modal-header">
+      <h4 class="modal-title" id="add" id="modal-basic-title">New Team</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <label for="name">Team Name</label>
+      <input type="text" class="form-control" [(ngModel)]="name" name="name" />
+      <br>
+      <label for="username">Location</label>
+      <input type="text" class="form-control" [(ngModel)]="location" name="location" />
+      <br>
+      <label for="username">Image Url (Optional)</label>
+      <input type="text" class="form-control" [(ngModel)]="imageurl" name="imageurl" />
+      <br>
+      <label for="username">Number of stadium seats</label>
+      <input type="text" class="form-control" [(ngModel)]="nrseats" name="nrseats"/>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+      <div class="border text-center">
+        <input type="submit" name="Add"  class="btn btn-primary" value="Add New Team" data-dismiss="modal" (click)="modal.close('Save click')" class="btn btn-success" (click)="onSubmit()"(click)="closeModal()" >
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+
+
+
+<!-- Edit Team Modal -->
+<ng-template #update let-modal>
+  <form>
+    <div class="modal-header">
+      <h4 class="modal-title" id="edit" id="modal-basic-title">Update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <label for="name">Team Name</label>
+      <input type="text" class="form-control" [(ngModel)]="uname" name="uname" />
+      <br>
+      <label for="username">Location</label>
+      <input type="text" class="form-control" [(ngModel)]="ulocation" name="ulocation" />
+      <br>
+      <label for="username">Image Url (Optional)</label>
+      <input type="text" class="form-control" [(ngModel)]="uimageurl" name="uimageurl" />
+      <br>
+      <label for="username">Number of stadium seats</label>
+      <input type="text" class="form-control" [(ngModel)]="unrseats" name="unrseats"/>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+      <div class="border text-center">
+        <input type="submit" name="Add"  class="btn btn-primary" value="Edit" data-dismiss="modal" (click)="modal.close('Save click')" class="btn btn-success" (click)="onSubmitEdit()"(click)="closeModal()" >
+      </div>
+    </div>
+  </form>
+</ng-template>
+

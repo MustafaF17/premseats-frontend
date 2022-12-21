@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="main-body">
+
+        <br>
+        <h1>My tickets</h1>
+        <br>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
+            <div *ngFor="let ticket of tickets" class="col mb-3">
+                <div class="card">
+                    <img src="https://i.pinimg.com/originals/42/50/cf/4250cf3e0be36300f7f2db83c6827ca6.jpg" alt="Cover"
+                        class="card-img-top">
+                    <div class="card-body text-center">
+                        <img src="https://cdn4.iconfinder.com/data/icons/tickets-1/512/ticket_tickets_sport_game_soocer_football-2-512.png"
+                            style="margin-top:-65px" height="60px" width="60px" alt="Team"
+                            class="img-fluid img-thumbnail rounded-circle border-0 mb-3">
+                        <h5 class="card-title">{{ticket.home}} vs {{ticket.away}}</h5>
+                        <p class="text-secondary mb-1">Price paid: ${{ticket.price}}</p>
+                        <p class="text-muted font-size-sm">Location: {{ticket.home}} stadium</p>
+                        <p class="text-muted font-size-sm">Date of event {{ticket.date}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

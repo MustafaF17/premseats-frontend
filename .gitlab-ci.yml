@@ -1,0 +1,25 @@
+build site:
+  stage: build
+  script:
+    - npm install --progress=false
+    - npm run build
+
+
+unit test:
+  stage: test
+  script:
+    - npm install --progress=false
+    - npx ng test --sourceMap=false --browsers=ChromeHeadless --watch=false
+
+
+sonar test:
+  stage: test
+  script:
+    - npm install --progress=false
+    - npm run sonar
+
+deploy:
+  stage: deploy
+  script:
+    - npm install --progress=false
+    - npx ng deploy

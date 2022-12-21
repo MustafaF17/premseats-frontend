@@ -1,0 +1,13 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/home">Home</a>
+        <a class="nav-item nav-link" routerLink="/team">Teams</a>
+        <a *ngIf="isAdmin;" class="nav-item nav-link" routerLink="/admin">Control Panel</a>
+        <a *ngIf="isAdmin;" class="nav-item nav-link" routerLink="/manageticket">Manage Tickets</a>
+        <a *ngIf="isLogged;" class="nav-item nav-link" routerLink="/ticket">My tickets</a>
+        <a *ngIf="isLogged;" class="nav-item nav-link" routerLink="/pay">Top up</a>
+        <a *ngIf="!isLogged;" class="nav-item nav-link" routerLink="/login">Login</a>
+        <a *ngIf="isLogged;" class="nav-item nav-link" routerLink="/logout">Logout</a>
+    </div>
+</nav>
